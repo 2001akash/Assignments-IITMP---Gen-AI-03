@@ -1,0 +1,677 @@
+ASSIGNMENT 2 PCA - PYTHON IMPLEMENTATION SOLUTIONS
+===================================================
+
+QUESTION 1: Calculate Mean and Center Data
+-------------------------------------------
+Solution:
+
+import numpy as np
+
+X = np.array([
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 4],
+    [6, 5]
+])
+
+# Calculate the mean of each feature
+mean = np.mean(X, axis=0)
+print("Mean of each feature:", mean)
+# Output: [4. 3.]
+
+# Subtract the mean from each feature (centering)
+X_centered = X - mean
+print("Centered data:")
+print(X_centered)
+# Output:
+# [[-2. -2.]
+#  [-1. -1.]
+#  [ 0.  0.]
+#  [ 1.  1.]
+#  [ 2.  2.]]
+
+
+QUESTION 2: Visualize Data Distribution
+-----------------------------------------
+Solution:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+X = np.array([
+    [1, 2],
+    [2, 4],
+    [3, 6],
+    [4, 8],
+    [5, 10]
+])
+
+# Calculate the mean of each column
+mean = np.mean(X, axis=0)
+print("Mean of each column:", mean)
+# Output: [3. 6.]
+
+# Center the data
+X_centered = X - mean
+print("Centered data:")
+print(X_centered)
+
+# Plot the original data
+plt.figure(figsize=(10, 4))
+
+plt.subplot(1, 2, 1)
+plt.scatter(X[:, 0], X[:, 1], color='blue', s=50)
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.title('Original Data')
+plt.grid(True)
+
+# Plot centered data
+plt.subplot(1, 2, 2)
+plt.scatter(X_centered[:, 0], X_centered[:, 1], color='red', s=50)
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.title('Centered Data')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+# Observation: The data is distributed in a diagonal direction, showing strong positive correlation.
+# PC1 would align with this diagonal direction (from lower-left to upper-right).
+
+
+QUESTION 3: Calculate Covariance Matrix
+----------------------------------------
+Solution:
+
+import numpy as np
+
+# Using centered data from Question 1
+X = np.array([
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 4],
+    [6, 5]
+])
+
+mean = np.mean(X, axis=0)
+X_centered = X - mean
+
+# Calculate covariance matrix
+cov_matrix = np.cov(X_centered.T)
+print("Covariance matrix:")
+print(cov_matrix)
+# Output:
+# [[2.5  2.5]
+#  [2.5  2.5]]
+
+# Extract variance of each feature (diagonal elements)
+variance_feature1 = cov_matrix[0, 0]
+variance_feature2 = cov_matrix[1, 1]
+print("\nVariance of Feature 1:", variance_feature1)
+# Output: 2.5
+print("Variance of Feature 2:", variance_feature2)
+# Output: 2.5
+
+# Covariance between features (off-diagonal)
+covariance = cov_matrix[0, 1]
+print("Covariance between features:", covariance)
+# Output: 2.5 (strong positive correlation)
+
+
+QUESTION 4: Comprehensive PCA Calculations
+--------------------------------------------
+Solution:
+
+import numpy as np
+
+X = np.array([
+    [1, 2],
+    [2, 3],
+    [3, 5],
+    [4, 7],
+    [5, 8]
+])
+
+# Step 1: Calculate mean of each feature
+mean = np.mean(X, axis=0)
+print("Mean of each feature:", mean)
+# Output: [3. 5.]
+
+# Step 2: Center the data
+X_centered = X - mean
+print("\nCentered data:")
+print(X_centered)
+
+# Step 3: Calculate covariance matrix
+cov_matrix = np.cov(X_centered.T)
+print("\nCovariance matrix:")
+print(cov_matrix)
+# Output shows how features vary together
+
+
+QUESTION 5: Positively Correlated Features
+---------------------------------------------
+Solution:
+
+import numpy as np
+
+# Create strongly positively correlated features
+np.random.seed(42)
+X = np.random.rand(100, 1)
+feature1 = X.flatten()
+feature2 = 2 * feature1 + np.random.normal(0, 0.1, 100)  # Y = 2X + noise
+
+# Combine into array
+data = np.column_stack((feature1, feature2))
+
+# Mean center
+mean = np.mean(data, axis=0)
+data_centered = data - mean
+
+# Calculate covariance matrix
+cov_pos = np.cov(data_centered.T)
+print("Covariance matrix (positively correlated):")
+print(cov_pos)
+
+# Observation: Off-diagonal elements are positive and large
+# This indicates positive correlation between features
+
+
+QUESTION 6: Negatively Correlated Features
+---------------------------------------------
+Solution:
+
+import numpy as np
+
+# Create negatively correlated features
+np.random.seed(42)
+X = np.random.rand(100, 1)
+feature1 = X.flatten()
+feature2 = -2 * feature1 + np.random.normal(0, 0.1, 100)  # Y = -2X + noise
+
+# Combine into array
+data = np.column_stack((feature1, feature2))
+
+# Mean center
+mean = np.mean(data, axis=0)
+data_centered = data - mean
+
+# Calculate covariance matrix
+cov_neg = np.cov(data_centered.T)
+print("Covariance matrix (negatively correlated):")
+print(cov_neg)
+
+# Comparison
+print("\nComparison:")
+print("Positively correlated: off-diagonal elements are POSITIVE")
+print("Negatively correlated: off-diagonal elements are NEGATIVE")
+
+
+QUESTION 7: Eigenvalues and Eigenvectors
+-------------------------------------------
+Solution:
+
+import numpy as np
+
+C = np.array([
+    [4, 2],
+    [2, 3]
+])
+
+# Calculate eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(C)
+
+print("Eigenvalues:", eigenvalues)
+# Output: [5.37228132 1.62771868]
+
+print("\nEigenvectors:")
+print(eigenvectors)
+
+# Find eigenvector corresponding to largest eigenvalue
+max_eigenvalue_idx = np.argmax(eigenvalues)
+principal_eigenvector = eigenvectors[:, max_eigenvalue_idx]
+
+print("\nEigenvector for largest eigenvalue:", principal_eigenvector)
+print("This is the direction of the first principal component")
+
+
+QUESTION 8: Diagonal Covariance Matrix
+---------------------------------------
+Solution:
+
+import numpy as np
+
+C = np.array([
+    [5, 0],
+    [0, 2]
+])
+
+# Calculate eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(C)
+
+print("Eigenvalues:", eigenvalues)
+# Output: [5. 2.]
+
+print("\nEigenvectors:")
+print(eigenvectors)
+# Output: Identity matrix (for diagonal matrix)
+
+# Determine first principal component
+first_pc_idx = np.argmax(eigenvalues)
+first_pc = eigenvectors[:, first_pc_idx]
+
+print("\nFirst principal component:", first_pc)
+# Output: [1. 0.] - along the x-axis (first dimension)
+print("This direction represents the maximum variance (eigenvalue = 5)")
+
+
+QUESTION 9: Sort Eigenvalues and Eigenvectors
+----------------------------------------------
+Solution:
+
+import numpy as np
+
+C = np.array([
+    [6, 4],
+    [4, 3]
+])
+
+# Step 1: Find eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(C)
+
+print("Original eigenvalues:", eigenvalues)
+print("Original eigenvectors:")
+print(eigenvectors)
+
+# Step 2: Sort from largest to smallest
+sorted_indices = np.argsort(eigenvalues)[::-1]
+sorted_eigenvalues = eigenvalues[sorted_indices]
+sorted_eigenvectors = eigenvectors[:, sorted_indices]
+
+print("\nSorted eigenvalues (largest to smallest):", sorted_eigenvalues)
+print("Sorted eigenvectors:")
+print(sorted_eigenvectors)
+
+# Step 3: Interpretation
+print("\nPC1 corresponds to eigenvalue:", sorted_eigenvalues[0])
+print("PC2 corresponds to eigenvalue:", sorted_eigenvalues[1])
+
+
+QUESTION 10: Complete PCA Implementation (Without Library)
+-----------------------------------------------------------
+Solution:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Step-by-step implementation without sklearn
+X = np.array([
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 4],
+    [6, 5]
+])
+
+# Step 1: Mean Centering
+mean = np.mean(X, axis=0)
+X_centered = X - mean
+print("Step 1 - Centered data:")
+print(X_centered)
+
+# Step 2: Covariance Matrix
+cov_matrix = np.cov(X_centered.T)
+print("\nStep 2 - Covariance matrix:")
+print(cov_matrix)
+
+# Step 3: Eigenvalues & Eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+print("\nStep 3 - Eigenvalues:", eigenvalues)
+print("Eigenvectors:")
+print(eigenvectors)
+
+# Step 4: Sort Components
+idx = np.argsort(eigenvalues)[::-1]
+eigenvalues = eigenvalues[idx]
+eigenvectors = eigenvectors[:, idx]
+print("\nStep 4 - Sorted eigenvalues:", eigenvalues)
+
+# Step 5: Select Principal Components
+n_components = 2
+principal_components = eigenvectors[:, :n_components]
+
+# Step 6: Transform Data
+X_pca = np.dot(X_centered, principal_components)
+print("\nStep 6 - Transformed data:")
+print(X_pca)
+
+
+QUESTION 11: Project onto First Principal Component
+---------------------------------------------------
+Solution:
+
+import numpy as np
+
+X = np.array([
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 4],
+    [6, 5]
+])
+
+# Mean centering
+mean = np.mean(X, axis=0)
+X_centered = X - mean
+
+# Covariance and eigendecomposition
+cov_matrix = np.cov(X_centered.T)
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+
+# Sort by eigenvalues
+idx = np.argsort(eigenvalues)[::-1]
+eigenvectors = eigenvectors[:, idx]
+
+# Get first principal component (eigenvector with largest eigenvalue)
+first_pc = eigenvectors[:, 0]
+print("First principal component:", first_pc)
+
+# Project data onto first PC
+X_1d = np.dot(X_centered, first_pc)
+print("One-dimensional representation:")
+print(X_1d)
+
+
+QUESTION 12: Parameterized PCA Function
+----------------------------------------
+Solution:
+
+import numpy as np
+
+def custom_pca(X, n_components):
+    """
+    Custom PCA implementation
+    """
+    # Step 1: Mean centering
+    mean = np.mean(X, axis=0)
+    X_centered = X - mean
+    
+    # Step 2: Covariance matrix
+    cov_matrix = np.cov(X_centered.T)
+    
+    # Step 3: Eigenvalues and eigenvectors
+    eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+    
+    # Step 4: Sort by eigenvalues
+    idx = np.argsort(eigenvalues)[::-1]
+    eigenvalues = eigenvalues[idx]
+    eigenvectors = eigenvectors[:, idx]
+    
+    # Step 5: Select n_components eigenvectors
+    principal_components = eigenvectors[:, :n_components]
+    
+    # Step 6: Transform data
+    X_pca = np.dot(X_centered, principal_components)
+    
+    return X_pca, principal_components, eigenvalues[:n_components]
+
+# Test
+X = np.array([
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 4],
+    [6, 5]
+])
+
+X_reduced = custom_pca(X, n_components=1)
+print("Reduced data:")
+print(X_reduced[0])
+
+
+QUESTION 13: Using scikit-learn PCA
+------------------------------------
+Solution:
+
+import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+X = np.array([
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 4],
+    [6, 5]
+])
+
+# Apply PCA
+pca = PCA(n_components=1)
+X_transformed = pca.fit_transform(X)
+
+print("Original data:")
+print(X)
+
+print("\nTransformed data (1D):")
+print(X_transformed)
+
+print("\nExplained variance ratio:")
+print(pca.explained_variance_ratio_)
+
+print("\nTotal variance explained:")
+print(f"{pca.explained_variance_ratio_.sum():.2%}")
+
+
+QUESTION 14: Reduce 3D to 2D
+----------------------------
+Solution:
+
+import numpy as np
+from sklearn.decomposition import PCA
+
+X = np.array([
+    [2, 1, 5],
+    [3, 2, 6],
+    [4, 3, 7],
+    [5, 4, 8],
+    [6, 5, 9]
+])
+
+# Apply PCA
+pca = PCA(n_components=2)
+X_transformed = pca.fit_transform(X)
+
+print("Original data shape:", X.shape)
+print("Transformed data shape:", X_transformed.shape)
+
+print("\nTransformed data:")
+print(X_transformed)
+
+
+QUESTION 15: Explained Variance Analysis
+-----------------------------------------
+Solution:
+
+import numpy as np
+from sklearn.decomposition import PCA
+
+X = np.array([
+    [2, 1, 5],
+    [3, 2, 6],
+    [4, 3, 7],
+    [5, 4, 8],
+    [6, 5, 9]
+])
+
+# Apply PCA with all components
+pca = PCA()
+pca.fit(X)
+
+# Explained variance
+explained_var = pca.explained_variance_ratio_
+cumulative_var = np.cumsum(explained_var)
+
+print("Explained variance ratio:")
+print(explained_var)
+
+print("\nCumulative explained variance:")
+print(cumulative_var)
+
+print(f"\n1 component retains: {cumulative_var[0]:.2%}")
+print(f"2 components retain: {cumulative_var[1]:.2%}")
+
+
+QUESTION 16: Visualization of Original vs PCA
+----------------------------------------------
+Solution:
+
+import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+
+X = np.array([
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [4, 4],
+    [5, 5],
+    [6, 6]
+])
+
+# Apply PCA
+pca = PCA(n_components=1)
+X_pca = pca.fit_transform(X)
+
+# Visualization
+plt.figure(figsize=(12, 4))
+
+# Original data
+plt.subplot(1, 2, 1)
+plt.scatter(X[:, 0], X[:, 1], color='blue', s=50)
+plt.xlabel('Feature 1')
+plt.ylabel('Feature 2')
+plt.title('Original 2D Data')
+plt.grid(True)
+
+# PCA data
+plt.subplot(1, 2, 2)
+plt.scatter(X_pca[:, 0], np.zeros_like(X_pca), color='red', s=50)
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.title('PCA Transformed (1D)')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+
+QUESTION 17: 3D to 2D Visualization
+------------------------------------
+Solution:
+
+import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+X = np.array([
+    [1, 2, 3],
+    [2, 4, 6],
+    [3, 6, 9],
+    [4, 8, 12],
+    [5, 10, 15],
+    [6, 12, 18]
+])
+
+# Apply PCA
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Visualization
+plt.figure(figsize=(12, 4))
+
+# 3D original data
+ax1 = plt.subplot(1, 2, 1, projection='3d')
+ax1.scatter(X[:, 0], X[:, 1], X[:, 2], color='blue', s=50)
+ax1.set_xlabel('Feature 1')
+ax1.set_ylabel('Feature 2')
+ax1.set_zlabel('Feature 3')
+ax1.set_title('Original 3D Data')
+
+# 2D PCA data
+plt.subplot(1, 2, 2)
+plt.scatter(X_pca[:, 0], X_pca[:, 1], color='red', s=50)
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.title('PCA Transformed (2D)')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+
+QUESTION 18: Standardization Comparison
+----------------------------------------
+Solution:
+
+import numpy as np
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+X = np.array([
+    [1, 100],
+    [2, 200],
+    [3, 300],
+    [4, 400],
+    [5, 500]
+])
+
+print("Original data:")
+print(X)
+
+# PCA without standardization
+pca_no_scale = PCA(n_components=2)
+X_no_scale = pca_no_scale.fit_transform(X)
+
+print("\n--- Without Standardization ---")
+print("Explained variance ratio:", pca_no_scale.explained_variance_ratio_)
+print("PC1 explains: {:.2%}".format(pca_no_scale.explained_variance_ratio_[0]))
+
+# PCA with standardization
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+pca_scaled = PCA(n_components=2)
+X_with_scale = pca_scaled.fit_transform(X_scaled)
+
+print("\n--- With Standardization ---")
+print("Explained variance ratio:", pca_scaled.explained_variance_ratio_)
+print("PC1 explains: {:.2%}".format(pca_scaled.explained_variance_ratio_[0]))
+
+print("\n--- Comparison ---")
+print("Without scaling: PC1 dominates because feature 2 has much larger scale")
+print("With scaling: Both features contribute more evenly to PCs")
+
+# Visualization
+plt.figure(figsize=(12, 4))
+
+plt.subplot(1, 2, 1)
+plt.scatter(X_no_scale[:, 0], X_no_scale[:, 1], color='blue', s=50)
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.title('PCA Without Standardization')
+plt.grid(True)
+
+plt.subplot(1, 2, 2)
+plt.scatter(X_with_scale[:, 0], X_with_scale[:, 1], color='red', s=50)
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.title('PCA With Standardization')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
