@@ -1,0 +1,81 @@
+FOUNDATIONAL MCQ - ANSWER KEY
+
+Section 1: K-Nearest Neighbors (KNN)
+
+1. B - KNN assigns a class using nearby labeled examples.
+2. C - K is the number of neighbors used.
+3. B - Classification votes among the five closest examples.
+4. B - KNeighborsClassifier is the scikit-learn classifier.
+5. A - It is imported from sklearn.neighbors.
+6. B - fit(X_train, y_train) learns from the labeled training data.
+7. C - predict(X_test) returns labels for new examples.
+8. B - Large-range features can dominate distance.
+9. B - Income can dominate age without scaling.
+10. A - StandardScaler standardizes numeric features.
+11. A - A pipeline puts scaling before KNN.
+12. B - Fit preprocessing on training data to avoid test leakage.
+13. A - K=1 uses the single closest example.
+14. B - Small K is sensitive to noise and outliers.
+15. A - Large K can smooth away local patterns.
+16. A - Cross-validation compares K values on training folds.
+17. B - Odd K can reduce two-class vote ties.
+18. A - Distance weighting gives closer neighbors more influence.
+19. A - Uniform weighting gives every selected neighbor equal weight.
+20. A - Euclidean distance is straight-line distance.
+21. A - Manhattan distance sums absolute differences.
+22. A - The metric setting changes neighbor distance.
+23. A - K cannot exceed the available training sample count.
+24. A - KNeighborsRegressor predicts continuous outcomes.
+25. A - Regression combines nearby target values.
+26. A - Similar houses can inform a house price estimate.
+27. B - Risk category is a classification target.
+28. A - Prediction may search many stored training examples.
+29. A - Instance-based prediction uses stored examples.
+30. A - Irrelevant features can distort distance.
+31. A - Distances become less informative in high dimensions.
+32. A - Conflicting labels at identical points create ambiguous evidence.
+33. A - predict_proba returns estimated class probabilities.
+34. A - The majority neighbor class wins.
+35. A - Scale features measured in incompatible units.
+36. A - test_size=0.2 reserves about one fifth for testing.
+37. A - Keep the final test set independent of K selection.
+38. A - Recall is useful when missing positive cases is costly.
+39. A - Classifier score() defaults to accuracy.
+40. A - Majority-only predictions can hide poor minority detection.
+41. A - Encode categories meaningfully before using distances.
+42. A - Arbitrary codes imply artificial ordering and distances.
+43. A - Unrelated features can make neighbor selection unreliable.
+44. A - GridSearchCV evaluates candidate parameters with cross-validation.
+45. A - n_neighbors controls K.
+46. A - Pixel distance may not reflect visual similarity.
+47. A - weights="distance" emphasizes closer examples.
+48. A - KNN is intuitive when similar profiles have similar outcomes.
+49. A - X_train contains training input features.
+50. A - y_train contains the training targets or labels.
+
+Section 2: Naive Bayes
+
+For questions 1-50, option A is correct. These items cover supervised classification; Bayes posteriors and priors; Gaussian, Multinomial, and Bernoulli variants; numerical text features; conditional independence; smoothing; probabilities; and proper evaluation without leakage.
+
+Answers: 1:A, 2:A, 3:A, 4:A, 5:A, 6:A, 7:A, 8:A, 9:A, 10:A, 11:A, 12:A, 13:A, 14:A, 15:A, 16:A, 17:A, 18:A, 19:A, 20:A, 21:A, 22:A, 23:A, 24:A, 25:A, 26:A, 27:A, 28:A, 29:A, 30:A, 31:A, 32:A, 33:A, 34:A, 35:A, 36:A, 37:A, 38:A, 39:A, 40:A, 41:A, 42:A, 43:A, 44:A, 45:A, 46:A, 47:A, 48:A, 49:A, 50:A
+
+
+Section 3: Decision Trees
+
+For questions 1-50, option A is correct. These items cover feature-threshold splits, nodes and leaves, classification versus regression, impurity, complexity controls, overfitting, pruning, interpretation, feature importance, and evaluation.
+
+Answers: 1:A, 2:A, 3:A, 4:A, 5:A, 6:A, 7:A, 8:A, 9:A, 10:A, 11:A, 12:A, 13:A, 14:A, 15:A, 16:A, 17:A, 18:A, 19:A, 20:A, 21:A, 22:A, 23:A, 24:A, 25:A, 26:A, 27:A, 28:A, 29:A, 30:A, 31:A, 32:A, 33:A, 34:A, 35:A, 36:A, 37:A, 38:A, 39:A, 40:A, 41:A, 42:A, 43:A, 44:A, 45:A, 46:A, 47:A, 48:A, 49:A, 50:A
+
+
+Section 4: Random Forest
+
+For questions 1-50, option A is correct. These items cover ensembles of trees, voting and averaging, bootstrap sampling, feature randomness, OOB estimates, hyperparameters, importance, class imbalance, leakage, and evaluation.
+
+Answers: 1:A, 2:A, 3:A, 4:A, 5:A, 6:A, 7:A, 8:A, 9:A, 10:A, 11:A, 12:A, 13:A, 14:A, 15:A, 16:A, 17:A, 18:A, 19:A, 20:A, 21:A, 22:A, 23:A, 24:A, 25:A, 26:A, 27:A, 28:A, 29:A, 30:A, 31:A, 32:A, 33:A, 34:A, 35:A, 36:A, 37:A, 38:A, 39:A, 40:A, 41:A, 42:A, 43:A, 44:A, 45:A, 46:A, 47:A, 48:A, 49:A, 50:A
+
+
+Section 5: Logistic Regression
+
+For questions 1-50, option A is correct. These items cover binary and multiclass classification, sigmoid probabilities, thresholds, coefficients and log-odds, scaling, regularization, metrics, calibration, convergence, and leakage.
+
+Answers: 1:A, 2:A, 3:A, 4:A, 5:A, 6:A, 7:A, 8:A, 9:A, 10:A, 11:A, 12:A, 13:A, 14:A, 15:A, 16:A, 17:A, 18:A, 19:A, 20:A, 21:A, 22:A, 23:A, 24:A, 25:A, 26:A, 27:A, 28:A, 29:A, 30:A, 31:A, 32:A, 33:A, 34:A, 35:A, 36:A, 37:A, 38:A, 39:A, 40:A, 41:A, 42:A, 43:A, 44:A, 45:A, 46:A, 47:A, 48:A, 49:A, 50:A

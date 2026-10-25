@@ -1,0 +1,52 @@
+LOGISTIC REGRESSION MCQ - ANSWER KEY
+
+1. B - Logistic regression is used for classification.
+2. B - Its output is a class probability.
+3. B - The sigmoid function maps a score to a probability.
+4. B - Sigmoid outputs lie between 0 and 1.
+5. A - It models the probability of a class from feature values.
+6. B - The basic boundary is linear in the supplied features.
+7. B - 0.7 exceeds the 0.5 threshold and maps to class 1.
+8. B - Maximum likelihood estimation fits the model.
+9. B - Cross-entropy (log loss) is the common objective.
+10. B - Binary classification is a standard use.
+11. B - 0.49 is below 0.5 and maps to class 0.
+12. A - A higher threshold requires more evidence to predict class 1.
+13. B - A linear boundary suits linearly separable classes.
+14. B - Multicollinearity mainly destabilizes coefficient estimates.
+15. B - Extreme 0/1 probabilities can indicate overconfidence or overfitting.
+16. A - Odds are the probability of an event divided by its complement.
+17. B - The log of odds is the logit.
+18. B - Regularization constrains model complexity and can reduce overfitting.
+19. A - Accuracy can hide poor performance on a minority class.
+20. B - The output probabilities can be interpreted as class likelihood estimates, subject to calibration.
+21. B - fit() trains the logistic model.
+22. B - predict() returns class labels.
+23. B - predict_proba() returns probabilities for each class.
+24. B - sklearn.linear_model.LogisticRegression is the class.
+25. B - Unscaled features can hinder optimization and convergence.
+26. B - coef_ stores feature weights.
+27. B - intercept_ stores the bias term.
+28. B - predict() returns labels, not probability estimates.
+29. B - log_loss is cross-entropy loss.
+30. C - A continuous target is not a valid logistic classification label.
+31. A - scikit-learn is commonly used.
+32. B - Regularization controls model complexity.
+33. B - C is the inverse regularization-strength parameter.
+34. B - A large C means weaker regularization.
+35. B - The solver determines the optimization method.
+36. B - A train-test performance gap indicates overfitting.
+37. B - Precision and recall are more informative for class imbalance.
+38. B - A basic linear logit can struggle with highly nonlinear patterns.
+39. B - A straight boundary matches the basic logistic model.
+40. A - Irrelevant features can add noise.
+41. B - Probabilities near 0.5 indicate uncertainty at the default threshold.
+42. B - Lowering the threshold generally predicts more positives.
+43. B - Perfect separation can produce very large coefficients without regularization.
+44. B - Regularization helps reduce overfitting.
+45. B - Extremely large coefficients can signal overfitting or separation.
+46. B - Logistic regression is a parametric model.
+47. B - High precision with low recall means many true positives are found, but many actual positives are missed.
+48. A - Outliers or high-leverage observations can affect the fitted boundary.
+49. B - Feature engineering can improve how the model represents the relationship.
+50. B - The sigmoid transforms the linear score for binary classification.

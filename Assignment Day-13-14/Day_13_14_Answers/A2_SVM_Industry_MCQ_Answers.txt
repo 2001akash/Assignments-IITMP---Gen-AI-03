@@ -1,0 +1,52 @@
+SVM INDUSTRY MCQ - ANSWER KEY
+
+1. B - A linear SVM is a strong, manageable baseline for sparse high-dimensional TF-IDF.
+2. D - Assess an SVM on the existing embeddings with held-out data.
+3. A - Accuracy hides failure to find rare fraud; inspect positive-class metrics.
+4. C - Higher positive-class penalty emphasizes missed defects but cannot guarantee outcomes.
+5. B - Unscaled pressure can dominate RBF distances.
+6. D - Serving with a different scaler changes the representation from training.
+7. A - Windows from the same cycle leaked across random partitions.
+8. B - Keep each patient?s recordings together in the split.
+9. C - Train on earlier transactions and validate on later transactions.
+10. A - Soft margins can avoid overfitting difficult or mislabeled examples.
+11. D - Large C and gamma can create an overly local boundary and overfit.
+12. B - Very low gamma can make similarities too uniform to separate useful patterns.
+13. C - Prefer the faster linear model when performance is effectively tied.
+14. A - Approximate kernel features plus a linear model scale better.
+15. D - More support vectors typically increase scoring work and storage.
+16. B - A linear model stores a weight vector and intercept.
+17. C - Inspect feature contributions while accounting for scaling and correlation.
+18. A - Correlated predictors share signal and coefficients depend on scaling and regularization.
+19. D - A label does not establish reliable behavior far outside training support.
+20. B - A decision score is not automatically a calibrated probability.
+21. C - Calibrate on held-out or out-of-fold scores, then evaluate probability quality.
+22. A - Rank scores and evaluate fraud yield within the daily inspection budget.
+23. D - Lower threshold predicts more positives; recall will not fall and false positives may rise.
+24. B - Compare models at a common review capacity or other operating constraint.
+25. C - Novelty relative to training data does not necessarily mean danger.
+26. A - One-class SVM models normality without labels for every fault type.
+27. D - Contamination can teach the detector that recurring faults are normal.
+28. B - Check regime coverage and condition on operating mode if needed.
+29. C - Nu?s training bounds do not fix the exact future anomaly rate.
+30. A - Epsilon-SVR ignores residuals inside a chosen tolerance band.
+31. D - A wider epsilon tube can put more residuals inside the free region and reduce support vectors.
+32. B - Random windows may leak machine-specific information across partitions.
+33. C - Post-outcome variables leak information unavailable at decision time.
+34. A - Duplicated examples can land in both train and validation sets.
+35. D - Fit label-informed feature selection separately in each training fold.
+36. B - Tuning on the same CV scores selects favorable noise; use nested CV or a final set.
+37. C - Telephone recordings may differ in distribution or representation quality.
+38. A - Investigate representations, boundary, labels, and evaluation before blaming SVM generally.
+39. D - Integer codes impose artificial order and distance on unordered categories.
+40. B - Fit imputation inside each training fold and apply it to validation.
+41. C - High accuracy on common conditions says little about omitted rare conditions.
+42. A - Margin magnitude does not guarantee calibration or safety under shift.
+43. D - Independent models can have incomparable score scales.
+44. B - One-versus-rest models may overlap on positive scores; add a multiclass decision rule.
+45. C - A closed-set SVM may force an unseen item into a known class without rejection.
+46. A - Changing prevalence can change precision among flagged cases.
+47. D - Error patterns can shift even if the positive-prediction rate stays stable.
+48. B - Reviewed labels are selected and may not represent all transactions.
+49. C - Uninvestigated faults may be incorporated into the updated normal model.
+50. A - Choose using error costs, operating constraints, and validated task-specific metrics.

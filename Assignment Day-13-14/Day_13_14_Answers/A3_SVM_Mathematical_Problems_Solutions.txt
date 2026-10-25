@@ -1,0 +1,58 @@
+SVM MATHEMATICAL PROBLEMS - WORKED SOLUTIONS
+
+Part A: Geometry and Classification
+
+1. Decision boundary and distances
+(a) 3x1 + 4x2 - 10 = 0.
+(b) f(A)=3(2)+4(2)-10=4; f(B)=4-10=-6; f(C)=6+4-10=0.
+(c) A positive, B negative, C on the boundary.
+(d) Distance is |f(x)|/||w|| and ||w||=5: A=4/5, B=6/5, C=0.
+(e) Projection of A onto the boundary is xA - f(A)w/||w||^2 = (2,2)-(4/25)(3,4)=(38/25,34/25).
+
+2. Functional and geometric margins
+||w||=sqrt(5). Scores are f(x1)=2, f(x2)=-2, f(x3)=1. Signed functional margins y_i f_i are 2, 2, 1. Signed geometric margins are 2/sqrt(5), 2/sqrt(5), 1/sqrt(5). Minimum functional margin=1; minimum signed geometric margin=1/sqrt(5). With (5w,5b), functional margins become 10,10,5, while geometric margins stay unchanged because both numerator and ||w|| scale by 5.
+
+3. Canonical margin hyperplanes
+Decision: 2x1-x2-3=0. The +1 and -1 margin planes are 2x1-x2-3=+1 and =-1 (equivalently 2x1-x2=4 and =2). Each is 1/sqrt(5) from the decision boundary; full width=2/sqrt(5). At (3,1), f=2 and y f=2, outside the margin. At (1,0), f=-1 and y f=1, on the negative margin.
+
+4. One-dimensional hard-margin SVM
+The closest points are -1 (negative) and 2 (positive). Canonical equations: -w+b=-1 and 2w+b=1, giving w=2/3,b=-1/3. Margins at x=-3,-1,2,4 are 7/3,1,1,7/3, so all constraints hold. Boundary x=1/2; margin planes x=-1 and x=2; full width=3. x=0 has score -1/3 (negative); x=1 has score 1/3 (positive).
+
+5. Two-dimensional maximum-margin separator
+A canonical solution is w=(1,1), b=-1. Positive points (2,0),(0,2) and negative point (0,0) are support vectors; their signed margins equal 1. Point (-1,-1) has margin 3. Norm=sqrt(2), full width=2/sqrt(2)=sqrt(2). f(1,1)=1 (positive); f(0.2,0.2)=-0.6 (negative).
+
+Part B: Soft Margins and Optimization
+
+6. Slack variables and hinge loss
+Signed margins y_i f_i: [1.5,0.4,0.8,-0.3,-0.6]. Minimum slacks max(0,1-margin): [0,0.6,0.2,1.3,1.6]. Correct but inside-margin observations: 2 and 3. Misclassified: 4 and 5. Sum slack=3.7. Objective=0.5(4)+2(3.7)=9.4.
+
+7. Comparing candidate classifiers
+J_A=1+3C; J_B=4+C; J_D=7. Pairwise equalities: A=B at C=1; A=D at C=2; B=D at C=3. Lower envelope: A for 0<C<1; A and B tie at 1; B for 1<C<3; B and D tie at 3; D for C>3. At C=2, A and D tie at 7 but B=6, so that pairwise tie is not optimal. Larger C places more weight on slack and favors the zero-slack candidate D once C>3.
+
+8. One subgradient update
+Scores are [2,-2,0], signed margins [2,2,0]. Only observation 3 has active hinge loss. grad_w=w-C*y3*x3=(1,-1); grad_b=-C*y3=-1. Simultaneous eta=0.1 update gives w'=(0.9,-0.9), b'=0.1. New scores: [1.9,-1.7,0.1]. Initial objective=0.5(2)+1=2. Updated norm squared=1.62; active hinge loss=0.9, so objective=0.5(1.62)+0.9=1.71.
+
+9. KKT conditions and support vectors
+Minimum slacks: [0,0,0.6,1.2]. mu=C-alpha=[2,1,0,0]. Both complementary slackness equations hold row by row. However, intercept stationarity fails: sum alpha_i y_i=0+1-2+2=1, not 0. Thus the supplied multipliers cannot be an optimum with an unregularized intercept. From alpha values alone: row 1 is a non-support vector; row 2 is a free support vector (0<alpha<C); rows 3 and 4 are bounded support vectors (alpha=C).
+
+10. Solving the two-point soft-margin SVM
+Equality gives alpha1=alpha2=alpha, 0<=alpha<=C. Dual objective is 2alpha-2alpha^2; hence alpha*=min(C,1/2). w=2alpha and b=0 is valid by symmetry. For C=1/4: w=1/2, margins=1/2, slacks=(1/2,1/2); primal=0.5(1/4)+(1/4)(1)=3/8. Dual=2(1/4)-2(1/16)=3/8. For C=1: alpha=1/2,w=1, slacks=(0,0); primal=1/2; dual=1-1/2=1/2.
+
+Part C: Kernels and Nonlinear Classification
+
+11. Polynomial feature map
+For K(x,z)=(x dot z)^2 in R^2, phi(x)=(x1^2,x2^2,sqrt(2)x1x2). For x=(1,2), z=(2,-1), x dot z=0, so K=0. phi(x)=(1,4,2sqrt(2)); phi(z)=(4,1,-2sqrt(2)); their inner product=4+4-8=0. With w_phi=(1,-1,0), the original-space boundary is x1^2-x2^2=0, or x1=+/-x2. (2,1) is positive; (1,2) is negative.
+
+12. XOR in feature space
+Assume an affine separator in the original space satisfies positive margins for (1,1),(-1,-1): adding those inequalities gives 2b>=2, so b>=1. Negative margins for (1,-1),(-1,1) give 2b<=-2, so b<=-1, a contradiction. Under phi=x1x2, positive points map to +1 and negative points to -1. Canonical separator is w_phi=1,b=0; feature-space width=2. In the original plane the boundary is x1x2=0, the two coordinate axes.
+
+13. RBF prediction
+f(x)=-exp(-||x||^2/2)+exp(-||x-(2,0)||^2/2). Scores: at (0,0), exp(-2)-1?-0.8647 (negative); at (1,0), 0 (boundary); at (2,0), 1-exp(-2)?0.8647 (positive). Equality of the two kernel terms means equal distances to (0,0) and (2,0), hence x1=1. As t tends to +infinity both terms vanish and f(t,0) tends to 0.
+
+14. Proposed kernel matrix
+Eigenvalues are 3,-1,1. The matrix is not PSD. For v=(1,-1,0), v^T G v=-2<0. This similarity is not a PSD kernel on these inputs. The smallest lambda>=0 making G+lambda I PSD is 1, shifting eigenvalues to 4,0,2.
+
+Part D: Support Vector Regression
+
+15. Epsilon-insensitive loss
+Predictions for x=0,1,2,3 are [1,3,5,7]. Residuals y-f are [0.2,-0.9,0.4,1.0]. With epsilon=0.5, losses are [0,0.4,0,0.5]. Minimum slack pairs (xi,xi*) are (0,0),(0,0.4),(0,0),(0.5,0). Strictly inside the tube: observations 1 and 3; outside: 2 and 4. Objective=0.5(2^2)+2(0.9)=3.8. At epsilon=1, every residual has loss 0 (the residual of 1 is on the tube boundary).

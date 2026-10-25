@@ -1,0 +1,52 @@
+LINEAR REGRESSION MCQ - ANSWER KEY
+
+1. C - Linear regression models the relationship between a dependent variable and predictors.
+2. B - The model is linear in its parameters.
+3. B - The error term represents unexplained variation.
+4. B - Squared error penalizes large residuals strongly, making MSE sensitive to outliers.
+5. B - R-squared of zero means no variance is explained relative to the mean baseline.
+6. B - Multicollinearity is correlation among predictors.
+7. D - Normality of input features is not a standard least-squares assumption.
+8. A - Gradient descent updates parameters to reduce the loss.
+9. B - A log transform can reduce right skew.
+10. B - Simple regression has one independent variable.
+11. B - Adding predictors can overfit and inflate training R-squared.
+12. C - High train and low test fit is a sign of overfitting.
+13. C - A nonlinear relationship can violate the model form.
+14. B - A residual pattern suggests the model has systematic bias or missed structure.
+15. C - Categorical predictors need numeric encoding.
+16. B - High bias commonly causes underfitting.
+17. B - More training observations often reduce variance.
+18. B - Highly correlated predictors create multicollinearity.
+19. C - Precision is a classification metric, not a regression metric.
+20. B - Least squares minimizes the sum of squared residuals.
+21. B - fit() estimates model parameters from the supplied data.
+22. B - y_pred contains the predicted target values.
+23. C - MSE is the average squared prediction error.
+24. C - Unscaled features can affect numerical conditioning and regularized model behavior.
+25. B - train_test_split randomly separates observations into subsets.
+26. D - A full workflow needs a split, fitting, and prediction; scaling may also be appropriate.
+27. B - coef_ contains the fitted feature weights.
+28. B - intercept_ is the fitted bias or intercept term.
+29. C - predict() generates output predictions.
+30. C - A categorical target is inappropriate for ordinary linear regression; use a classification model instead.
+31. B - Predictions normally have one value per input row, matching the target shape.
+32. B - scikit-learn is commonly used for regression models.
+33. B - R-squared summarizes fit relative to a mean-target baseline.
+34. B - Without a test set, poor generalization is harder to detect.
+35. B - Normalization changes feature scale.
+36. B - A train-test gap commonly indicates overfitting.
+37. B - Seasonality can be represented with engineered time features.
+38. B - A funnel residual pattern indicates nonconstant error variance (heteroscedasticity).
+39. B - Irrelevant features can add noise and complexity.
+40. C - Linear regression is comparatively easy to interpret.
+41. B - Duplicate predictors can make coefficients unstable through perfect multicollinearity.
+42. B - Outliers in the target can strongly affect least-squares regression.
+43. B - A zero slope means the fitted line does not change with X.
+44. B - Higher polynomial degree allows more nonlinear shapes.
+45. B - Constant predictions are a common underfitting symptom.
+46. B - More observations usually reduce estimation variance.
+47. B - Useful predictors and their quality matter greatly.
+48. B - Low train error and high test error indicates overfitting.
+49. B - A straight-line model may fit an exponential relation poorly.
+50. B - Feature engineering can better represent the signal and improve fit.

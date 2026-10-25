@@ -1,0 +1,62 @@
+SVM INTERVIEW QUESTIONNAIRE - ANSWERS
+
+1. Explain SVM simply.
+   SVM chooses a decision boundary that separates classes while keeping the nearest training points as far from it as possible.
+2. Why maximum-margin classifier?
+   It maximizes the distance from the boundary to the closest observations, which can help generalization.
+3. What are support vectors?
+   Training observations on or inside the margin; they determine the fitted boundary.
+4. How does it find the hyperplane?
+   It solves a convex optimization problem minimizing weight norm while satisfying margin constraints, with slack for overlap.
+5. Hard vs soft margin?
+   Hard margin requires perfect separation; soft margin allows violations and penalizes them through C.
+6. Why kernels?
+   Kernels let the model represent nonlinear boundaries through feature-space inner products.
+7. Kernel trick example?
+   An RBF kernel compares points by exp(-gamma times squared distance), enabling nonlinear separation without explicitly building infinitely many features.
+8. Linear vs nonlinear SVM?
+   Linear SVM uses a hyperplane in the input features; nonlinear SVM uses a kernel such as RBF to form curved boundaries.
+9. When choose linear over RBF?
+   For sparse high-dimensional data, large datasets, interpretability, or lower inference cost when performance is adequate.
+10. What does C represent?
+   C controls the trade-off between a wide margin and penalizing training violations.
+11. How does C affect model?
+   Small C tolerates more violations and stronger regularization; large C fits training examples more strictly and may overfit.
+12. What is gamma?
+   For RBF, gamma controls how local each training point?s influence is.
+13. Gamma too high or low?
+   Very high gamma can overfit with narrow local influence; very low gamma can underfit with overly smooth similarities.
+14. Why scale features?
+   SVM distances and margins depend on feature scale, especially with RBF kernels.
+15. Can SVM handle multiclass?
+   Yes; libraries commonly use one-versus-one or one-versus-rest strategies.
+16. Advantages?
+   Strong margins, effective high-dimensional separation, flexible kernels, and a convex training objective.
+17. Limitations?
+   Kernel training can be slow on large datasets; tuning and scaling matter; probabilities are not automatic; models can be less interpretable.
+18. Why effective high-dimensional?
+   The max-margin objective can generalize well when the feature space is large, including sparse text representations.
+19. Noise or overlap?
+   Use soft margins and tune C; assess class-specific performance and avoid fitting noisy points too aggressively.
+20. Overfitting and prevention?
+   Overfitting is a boundary too tailored to training data; control C/gamma, scale correctly, cross-validate, and use held-out evaluation.
+21. SVM vs logistic regression?
+   SVM focuses on margin and decision scores; logistic regression optimizes log loss and naturally yields probabilities, though calibration may still be needed.
+22. SVM vs trees?
+   SVM builds global margin boundaries; trees split features into rules and are often easier to explain but can be unstable.
+23. SVM vs neural nets?
+   SVM solves a convex margin problem for fixed kernel/hyperparameters; neural nets learn layered representations with nonconvex optimization.
+24. What metrics?
+   Accuracy plus precision, recall, F1, ROC AUC, average precision, and confusion matrices as suited to class balance and costs.
+25. What is SVR?
+   Support Vector Regression predicts a continuous value using an epsilon-insensitive tolerance tube.
+26. SVR vs traditional regression?
+   SVR penalizes errors outside an epsilon tube and can use kernels; least squares penalizes all residuals quadratically.
+27. Optimization technique?
+   Convex quadratic programming for standard SVM formulations.
+28. Why expensive?
+   Kernel methods can require many pairwise similarities and memory/time that grow steeply with sample count.
+29. Real project example?
+   A linear SVM can classify sparse labeled support tickets or documents when latency and compact inference matter.
+30. How improve poor SVM?
+   Check labels and leakage, scale in a pipeline, validate the split, inspect class imbalance, tune C/kernel/gamma, improve features, and compare operational metrics.

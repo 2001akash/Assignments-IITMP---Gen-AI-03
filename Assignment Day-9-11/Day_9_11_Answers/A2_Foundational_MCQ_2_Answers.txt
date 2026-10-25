@@ -1,0 +1,36 @@
+FOUNDATIONAL MCQ 2 - ANSWER KEY
+
+K-Nearest Neighbors (KNN)
+1. A - Euclidean distance is the square root of the sum of squared feature differences.
+2. A - For K=1, the nearest training record alone determines the vote.
+3. A - Uniform KNN regression averages the three neighboring house prices.
+4. A - Manhattan distance adds absolute feature differences.
+5. A - The larger monthly-fee range could dominate unscaled distances.
+
+Naive Bayes
+1. A - The target posterior is P(S | W), the probability of spam given the words.
+2. A - P(S) is the class prior before the current word evidence.
+3. A - Estimate the spam prior as 50 / 200.
+4. A - Naive Bayes uses conditional independence of features given the class.
+5. A - Smoothing prevents an unseen word from forcing a zero likelihood.
+
+Decision Trees
+1. A - Gini impurity measures class mixture at a node.
+2. A - Compare impurity to see if the split improves class separation.
+3. A - A pure stayed leaf has proportions p0=1 and p1=0.
+4. A - Child impurities are weighted by their sample counts.
+5. A - The churn proportion in the leaf estimates churn probability: 12 / 20.
+
+Random Forest
+1. A - Classification combines tree predictions by their mode.
+2. A - Regression usually averages the trees? numeric predictions.
+3. A - 72 of 100 votes is the fraction 72 / 100.
+4. A - Sampling with replacement can select the same row more than once.
+5. A - An OOB row is in training data but absent from that tree?s bootstrap sample.
+
+Logistic Regression
+1. A - The sigmoid output p is the positive-class probability estimate.
+2. A - At threshold 0.5, 0.73 is classified as churn.
+3. A - Substitute 4 support tickets into the linear score.
+4. A - Odds are p/(1-p), here 0.75/0.25.
+5. A - A positive coefficient raises the positive-class log-odds, holding other features fixed.

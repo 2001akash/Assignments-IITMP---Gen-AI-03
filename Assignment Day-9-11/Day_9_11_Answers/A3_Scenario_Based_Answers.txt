@@ -1,0 +1,61 @@
+SCENARIO-BASED QUESTIONS - ANSWER KEY
+
+K-Nearest Neighbors (KNN)
+1. B - KNN classifies by finding similar labeled patients.
+2. A - Three roses outvote two lilies.
+3. A - Scale features so large expenditure units do not dominate distance.
+4. B - KNeighborsRegressor predicts a continuous house price.
+5. A - With K=1, an unusual nearby record can dominate.
+6. A - A very large neighborhood can hide local patterns.
+7. A - KNN searches stored training examples when predicting.
+8. A - weights="distance" gives closer neighbors more influence.
+9. A - Choose K by cross-validation on training data.
+10. A - fit(X_train, y_train) trains the classifier.
+
+Naive Bayes
+1. A - It uses word evidence to compare class probabilities.
+2. A - MultinomialNB is common for word-count features.
+3. A - GaussianNB models continuous features with class-specific Gaussian distributions.
+4. A - BernoulliNB fits binary presence/absence indicators.
+5. A - An unseen word can have a zero likelihood without smoothing.
+6. A - alpha controls additive smoothing.
+7. A - The naive assumption is conditional independence given the class.
+8. A - Priors capture class frequencies before inspecting the new email.
+9. A - Fit vocabulary on training texts to prevent test-set information leakage.
+10. A - Recall measures how many spam messages are found.
+
+Decision Trees
+1. A - Trees express predictions as feature-based rules.
+2. A - The first split is the root-node split.
+3. A - Limit depth or raise min_samples_leaf to reduce overfitting.
+4. A - DecisionTreeClassifier predicts yes/no categories.
+5. A - DecisionTreeRegressor predicts a numerical length of stay.
+6. A - 37.5 satisfies temperature <= 38.0, so follow the true branch.
+7. A - plot_tree displays learned tree splits.
+8. A - Importance reflects use in this fitted tree, not causation.
+9. A - The future lab result is unavailable at admission and causes leakage.
+10. A - Compare depths to balance fit and generalization.
+
+Random Forest
+1. A - A forest combines randomized trees.
+2. A - n_estimators=100 creates 100 trees.
+3. A - Majority voting combines tree predictions.
+4. A - RandomForestRegressor predicts numeric prices.
+5. A - Bootstrap sampling with replacement creates variation among trees.
+6. A - Use positive-class precision and recall for imbalanced fraud data.
+7. A - Importance shows model reliance, not causal effect.
+8. A - OOB cases are training records omitted from a given tree?s bootstrap sample.
+9. A - More trees use more computation but do not guarantee better test results.
+10. A - Remove future information and reevaluate before using the model at admission.
+
+Logistic Regression
+1. A - LogisticRegression is a suitable binary classification baseline.
+2. A - A probability of 0.78 exceeds the 0.5 threshold.
+3. A - Lowering the threshold may catch more positives, with more false alarms.
+4. A - A lower threshold can increase true positives and false positives.
+5. A - Standardization helps when numeric features have different scales.
+6. A - A smaller C means stronger regularization.
+7. A - A positive coefficient raises positive-class log-odds, all else fixed.
+8. A - Check minority-class recall, precision, and the confusion matrix.
+9. A - Check scaling, solver settings, and max_iter after a convergence warning.
+10. A - A discharge diagnosis is unavailable at admission, causing leakage.
